@@ -1,4 +1,5 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,11pt]{article}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -19,7 +20,7 @@
 
 % Define a custom color for hyperlinks
 \usepackage[svgnames]{xcolor}
-\definecolor{wpblue}{RGB}{0,115,170}
+\definecolor{wpblue}{RGB}{34,92,173}
 \definecolor{wpred}{RGB}{173,34,49}
 
 
@@ -35,6 +36,7 @@
 }
 
 \usepackage{booktabs}
+
 
 \begin{document}
 
@@ -63,18 +65,18 @@ The author can be contacted via email at \href{mailto:aldolat@gmail.com}{\texttt
 The plugin is released under the terms of the GPL License v3.0 and later:
 
 \begin{quote}
-Copyright (C) 2009, 2020  Aldo Latino  (email : aldolat@gmail.com)
+Copyright \textcircled{c} 2009, 2020  Aldo Latino  (email : aldolat@gmail.com)
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
+it under the terms of the \textsc{gnu} General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but \textsc{without any warranty}; without even the implied warranty of
 \textsc{merchantability} or \textsc{fitness for a particular purpose}.  See the
-GNU General Public License for more details.
+\textsc{gnu} General Public License for more details.
 
-You should have received a copy of the GNU General Public License
+You should have received a copy of the \textsc{gnu} General Public License
 along with this program. If not, see\newline\href{http://www.gnu.org/licenses/}{http://www.gnu.org/licenses/}.
 \end{quote}
 
@@ -88,7 +90,7 @@ The action is performed using a shortcode, for example:
 [private role="administrator"]Text for administrators[/private]
 \end{lstlisting}
 
-Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: \textbf{a higher role can read a lower role content} (in almost all cases, see the paragraph below \textit{\hyperref[multiple-custom-roles]{Multiple custom roles}}), according to the following WordPress roles schema in descending order:
+Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: \textit{a higher role can read a lower role content} (in almost all cases, see the paragraph below \textit{\hyperref[multiple-custom-roles]{Multiple custom roles}}), according to the following WordPress roles schema in descending order:
 
 \begin{itemize}
  \item Administrator
@@ -98,18 +100,18 @@ Please, note that an Administrator can read an Editor private content or a Subsc
  \item Subscriber
 \end{itemize}
 
-Also you can show the hidden text \textbf{only} to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
+Also you can show the hidden text \textit{only} to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
 
 \section{Rapid changelog of the main modifications}
 
 \begin{description}
- \item \textbf{Version 3.0:} you can mark a text as visible only to a certain user, using his login name.
- \item \textbf{Version 4.0:} you can mark a text as visible to multiple users, using their login names comma separated.
- \item \textbf{Version 4.3:} you can use either the usual \verb+private+ shortcode or the extra \verb+ubn_private+, in case the first is already in use.
- \item \textbf{Version 5.0:} you can use the new option \verb+reverse+ to change the logic of the \verb+recipient+ option. If \verb+reverse+ is activated, it will not allow users in \verb+recipient+ read the private note.
- \item \textbf{Version 6.0}: you can use custom roles.
- \item \textbf{Version 6.1:} you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a \verb+role="custom-only"+ option has been used.
- \item \textbf{Version 6.2:} you can use custom \textsc{id}s and/or classes for the \textsc{html} container.
+ \item \textit{Version 3.0:} you can mark a text as visible only to a certain user, using his login name.
+ \item \textit{Version 4.0:} you can mark a text as visible to multiple users, using their login names comma separated.
+ \item \textit{Version 4.3:} you can use either the usual \verb+private+ shortcode or the extra \verb+ubn_private+, in case the first is already in use.
+ \item \textit{Version 5.0:} you can use the new option \verb+reverse+ to change the logic of the \verb+recipient+ option. If \verb+reverse+ is activated, it will not allow users in \verb+recipient+ read the private note.
+ \item \textit{Version 6.0}: you can use custom roles.
+ \item \textit{Version 6.1:} you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a \verb+role="custom-only"+ option has been used.
+ \item \textit{Version 6.2:} you can use custom \textsc{id}s and/or classes for the \textsc{html} container.
 \end{description}
 
 \section{The shortcode command}
@@ -181,10 +183,10 @@ Let's see them in detail in the Table \ref{table:roles}.
  \verb+contributor-only+ & The hidden text is shown to Contributors only. \\
  \verb+subscriber+ & The hidden text is shown to Subscribers, Contributors, Authors, Editors, Administrators. \\
  \verb+subscriber-only+ & The hidden text is shown to Subscribers only. \\
- \verb+visitor+ / \verb+visitor-only+ & The hidden text is shown only to non-logged-in users. \textbf{Administrators can read the hidden text.} \\
- \verb+none+ & When used, it is mandatory to use also the \verb+recipient+ option. The hidden text is shown only to users in the \verb+recipient+ list. \textbf{Administrators cannot read the hidden text.} \\
- \verb+custom+ & When used, it is mandatory to use also the \verb+custom_role+ option. The hidden text is shown only to users that have a role in the \verb+custom_role+ list. \textbf{Administrators can read the hidden text.} \\
- \verb+custom-only+ & When used, it is mandatory to use also the \verb+custom_role+ option. The hidden text is shown only to users that have a role in the \verb+custom_role+ list. \textbf{Administrators cannot read the hidden text.} \\
+ \verb+visitor+ / \verb+visitor-only+ & The hidden text is shown only to non-logged-in users. \textit{Administrators can read the hidden text.} \\
+ \verb+none+ & When used, it is mandatory to use also the \verb+recipient+ option. The hidden text is shown only to users in the \verb+recipient+ list. \textit{Administrators cannot read the hidden text.} \\
+ \verb+custom+ & When used, it is mandatory to use also the \verb+custom_role+ option. The hidden text is shown only to users that have a role in the \verb+custom_role+ list. \textit{Administrators can read the hidden text.} \\
+ \verb+custom-only+ & When used, it is mandatory to use also the \verb+custom_role+ option. The hidden text is shown only to users that have a role in the \verb+custom_role+ list. \textit{Administrators cannot read the hidden text.} \\
  \bottomrule
  \end{tabular}
  \caption{Who can read the private text when a given role is used.}
