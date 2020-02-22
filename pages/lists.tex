@@ -1,0 +1,28 @@
+\begingroup
+	\pdfbookmark[1]{\contentsname}{tableofcontents}
+	\tableofcontents
+
+	\newpage
+
+	\let\clearpage\relax
+    %\let\cleardoublepage\relax
+
+	\pdfbookmark[1]{\listfigurename}{lof}
+    \listoffigures
+
+    \vspace{8ex}
+
+    \pdfbookmark[1]{\listtablename}{lot}
+    \listoftables
+
+    \vspace{8ex}
+
+    \pdfbookmark[1]{Acronyms}{acronyms}
+    \markboth{\spacedlowsmallcaps{Acronyms}}{\spacedlowsmallcaps{Acronyms}}
+    \chapter*{Acronyms}
+    \begin{acronym}[UMLX]
+        \acro{HTML}{HyperText Markup Language}
+        \acro{CSS}{Cascading Style Sheets}
+        \acro{PHP}{PHP: Hypertext Preprocessor}
+    \end{acronym}
+\endgroup

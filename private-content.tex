@@ -1,12 +1,17 @@
 \documentclass[
-	%twoside, openright,
+	oneside,
+	%openright,
 	%titlepage,
-	%numbers=noenddot,%1headlines,
+	numbers=noenddot,
+	%1headlines,
 	headinclude,
-	%footinclude, cleardoublepage=empty, abstract=on, BCOR=5mm,
+	footinclude,
+	%cleardoublepage=empty,
+	abstract=on,
+	BCOR=5mm,
 	paper=a4,
 	fontsize=11pt
-]{scrartcl}
+]{scrreprt}
 
 \input{classicthesis-config.tex}
 
@@ -31,17 +36,15 @@
 
 	\newpage
 
-	\pagestyle{headings}
-
-	\tableofcontents
-
-	\listoftables
-
-	\listoffigures
+	\pagestyle{scrheadings}
 
 	\newpage
 
-	\maketitle
+	\input{pages/lists}
+
+	\newpage
+
+	%\maketitle
 
 	\input{pages/content}
 
