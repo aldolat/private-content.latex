@@ -2,9 +2,14 @@
 
 \chapter{Description}
 
-This plugin provides a shortcode to display a portion of a post or page content
-only to users of a specific role. For example, you can show the hidden text to
-Editors or to Authors or to any other WordPress role.
+This plugin provides a shortcode\footnote{«Shortcodes are macros that can be
+used to perform dynamic interactions with the content. i.e creating a gallery
+from images attached to the post or rendering a video». \textsc{WordPress.org},
+\textit{Plugin Handbook}, ``Shortcodes'',
+\url{https://developer.wordpress.org/plugins/shortcodes/}.} to display a portion
+of a post or page content only to users of a specific role. For example, you can
+show the hidden text to Editors or to Authors or to any other WordPress role.
+The plugin can also display the hidden text to specific users.
 
 The action is performed using a shortcode, for example:
 
@@ -32,7 +37,10 @@ Subscriber private content, and so on. Same thing for Editor, Author,
 Contributor, and Subscriber: \textit{a higher role can read a lower role
 content} (in almost all cases, see the paragraph \ref{multiple-custom-roles}
 \textit{Multiple custom roles} for more information), according to the following
-WordPress roles schema in descending order:
+WordPress roles\footnote{For more information see \textsc{WordPress.org},
+\textit{Plugin Handbook}, ``Roles and Capabilities'',
+\url{https://wordpress.org/support/article/roles-and-capabilities/}.} schema in
+descending order:
 
 \begin{itemize}
 	\item Administrator
@@ -53,22 +61,20 @@ such as Administrators or Editors and so on.
 The shortcode is \verb+[private]+:
 
 \begin{lstlisting}
-[private {options}]Text[/private]
+[private {attributes}]Text[/private]
 \end{lstlisting}
 
 There is another shortcode available \verb+[ubn_private]+, that can be used just
 in case \verb+private+ is already taken by another plugin:
 
 \begin{lstlisting}
-[ubn_private {options}]Text[/private]
+[ubn_private {attributes}]Text[/private]
 \end{lstlisting}
 
-\chapter{The shortcode options}
+\chapter{The shortcode attributes}
 
-\section{Available options for the shortcode}
-
-These are the available options for the shortcode, that will be explained in the
-next sections of this page:
+These are the available attributes for the shortcode, that will be explained in
+the next sections of this page:
 
 \begin{itemize}
  \item \verb+role+
@@ -108,7 +114,7 @@ Let's see them in detail in the table \ref{table:roles}.
  \centering
  \begin{tabular}[t]{l p{7cm}}
  \toprule
- \textbf{Role} & \textbf{Result} \\
+ \textsc{Role} & \textsc{Result} \\
  \midrule
  \verb+administrator+ & The hidden text is shown to Administrators. \\
  \verb+editor+ & The hidden text is shown to Editors and Administrators. \\
@@ -230,8 +236,12 @@ Accepted arguments:
 \begin{itemize}
   \item login name of the target user. You can use multiple login names, comma
   separated;
-  \item user \textsc{id} of the target user. You can use multiple user
-  \textsc{id}s, comma separated;
+  \item user \textsc{id}\footnote{By default, WordPress hides the \textsc{id}s
+  of elements like posts, pages, users, and so on. To display these \textsc{id}s
+  and use them in the shortcode you can install a dedicated plugin, like
+  \textit{Reveal IDs} by Oliver Schlöbe, available at
+  \url{https://wordpress.org/plugins/reveal-ids-for-wp-admin-25/}.} of the
+  target user. You can use multiple user \textsc{id}s, comma separated;
   \item login names and user \textsc{id}s mixed together.
 \end{itemize}
 
@@ -253,7 +263,7 @@ You can use a comma separated list of usernames to target certain users:
 Change \verb+login-name1+, \verb+login-name2+, and \verb+login-name3+ with the
 correct login names of the target users.
 
-Also, you can use user IDs to target users, for example:
+Also, you can use user \textsc{id}s to target users, for example:
 
 \begin{lstlisting}
   [private role="none" recipient="5, 31, 27"]Text for specific users only[/private]
@@ -323,8 +333,8 @@ For example:
 As you can see, Designers and Engineers are custom roles, while Author is a
 standard WordPress role. In the above example, Administrator will read the
 private text. Even in this case, as wrote before, you can use the
-\verb+role="custom-only"+ option to avoid Administrators can read the private
-text:
+\verb+role="custom-only"+ option to prevent Administrators from reading the
+private text:
 
 \begin{lstlisting}
 [private role="custom-only" custom_role="designers,engineers,author"]Text for Designers, Engineers, and Authors group.[/private]
@@ -333,12 +343,12 @@ text:
 \subsection{Caveat}\label{caveat}
 
 A note on using standard WordPress \graffito{A note when using WordPress
-standard roles here.} roles with the option \verb+role=custom+.
-If you use a standard WordPress role with the \verb+custom_role+ option, you
-expect that a higher role can read the private text for lowers roles, i.e. a
-text for Author role should be read by Editor role (which is a role higher that
-Author). Actually, Editor role won't read that text. This is normal, because the
-option \verb+role="custom"+ follows a path different than standard WordPress
+standard roles here.} roles with the option \verb+role=custom+. If you use a
+standard WordPress role with the \verb+custom_role+ option, you expect that a
+higher role can read the private text for lowers roles, i.e. a text for the
+Author role should be read by the Editor role (which is a role higher that
+Author). Actually, the Editor role won't read that text. This is normal, because
+the option \verb+role="custom"+ follows a path different than standard WordPress
 role management. It's like you'd use a \verb+role-only+ option, in our example a
 \verb+role="author-only"+ option. For example, this shortcode:
 
@@ -347,7 +357,7 @@ role management. It's like you'd use a \verb+role-only+ option, in our example a
 \end{lstlisting}
 
 \noindent will be read by Designers, Engineers, Authors, and Administrators, but
-not by Editors (even if Editors is a higher role that Author).
+not by Editors (even if Editor is a higher role than Author).
 
 \section{\texttt{\{reverse\}} Reverse the logic of hiding text}
 
@@ -365,9 +375,9 @@ the private text to all users/groups and hide it to some.
 The \verb+reverse+ option is available only with the following options:
 
 \begin{itemize}
- \item single users: \verb+role=none+, adding also the \verb+recipient+ option
+ \item \textit{single users:} \verb+role=none+, adding also the \verb+recipient+ option
  and the \verb+reverse+;
- \item custom roles: \verb+role=custom+, adding also the \verb+custom_role+
+ \item \textit{custom roles:} \verb+role=custom+, adding also the \verb+custom_role+
  option and the \verb+reverse+.
 \end{itemize}
 
@@ -585,14 +595,14 @@ The text generated by this plugin uses some CSS classes, listed here:
 
 It could be useful to test if the shortcode is working as intended. To do this,
 you can use a plugin that lets you temporarily switch between accounts. The
-plugin is \textit{User Switching} available at:
+plugin is \textit{User Switching} by John Blackbourn \& contributors available at:
 \begin{center}
   \url{https://wordpress.org/plugins/user-switching}
 \end{center}
 
 After having inserted the shortcode in the post/page, switch to the user account
 in the user management page using the relevant link, then visit the published
-page --- you should see the page as the user will see it.
+page. You should see the page as the user will see it.
 
 \part{Developer notes}
 
@@ -661,10 +671,10 @@ uninstallation process, the plugin removes its files and the modifications
 created during the installation. The removed modifications are:
 
 \begin{itemize}
-  \item remove \texttt{read\_ubn\_editor\_notes} capability from the \emph{editor} role;
-  \item remove \texttt{read\_ubn\_author\_notes} capability from the \emph{author} role;
-  \item remove \texttt{read\_ubn\_contributor\_notes} capability from the \emph{contributor} role;
-  \item remove \texttt{read\_ubn\_subscriber\_notes} capability from the \emph{subscriber} role.
+  \item remove \texttt{read\_ubn\_editor\_notes} capability from the Editor role;
+  \item remove \texttt{read\_ubn\_author\_notes} capability from the Author role;
+  \item remove \texttt{read\_ubn\_contributor\_notes} capability from the Contributor role;
+  \item remove \texttt{read\_ubn\_subscriber\_notes} capability from the Subscriber role.
 \end{itemize}
 
 \vfill
