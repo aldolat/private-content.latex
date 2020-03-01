@@ -553,6 +553,52 @@ In the following examples, instead, Administrators cannot read the hidden texts:
 [private role="custom-only" custom_role="engineers"]Private note for Engineers role.[/private]
 \end{lstlisting}
 
+\chapter{Nesting shortcodes}
+
+With Private Content you can nest a shortcode inside another shortcode. For
+example, you have a paragraph dedicated to Author and Marketing roles, but a
+portion of that text should be displayed to Marketing role only. For this
+purpose, you can nest a shortcode inside another.
+
+Only take note that you can't use the same shortcode name for both the outer
+shortcode and the nested shortcode: this is due to how WordPress handles the
+shortcode names.\footnote{For more information see \textsc{WordPress.org},
+\textit{Shortcode API}, ``Nested shortcodes'',
+\url{https://codex.wordpress.org/Shortcode_API\#Nested_Shortcodes}.}
+In other words, you can't do this:
+
+\begin{lstlisting}
+  [private]Text
+    [private]Nested text.[/private]
+    Text.
+  [/private]
+\end{lstlisting}
+
+Having in mind that Private Content has two names available,\footnote{Private
+Content has two shortcode names available since version 4.3. The new name was
+introduced in the case the name \texttt{private} was taken by another plugin.}
+\texttt{[private]} and \texttt{[ubn\_private]}, the correct nesting would be:
+
+\begin{lstlisting}
+  [private]Text
+    [ubn_private]Nested text.[/ubn_private]
+    Text.
+  [/private]
+\end{lstlisting}
+
+In our example, a nested shortcode could be:
+
+\begin{lstlisting}
+  [private role="custom" custom_role="author, marketing" container="div"]Leading text for Author and Marketing.
+  [ubn_private role="custom" custom_role="marketing"]Text for Marketing only.[/ubn_private]
+  Trailing text for Author and Marketing.[/private]
+\end{lstlisting}
+
+When nesting shortcodes, \graffito{Use \texttt{div} as container when nesting
+shortcodes.} it is advisable to use the \textsc{div} tag as container, because
+the standard P tag may produce unexpected results (for example, empty P tags
+and/or text without an \textsc{html} tag).
+
 \part{Style \& testing}
 
 \chapter{Giving a style to the private text}
