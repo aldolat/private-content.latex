@@ -20,7 +20,9 @@
 \newcommand{\myLocation}{Italy\xspace}
 \newcommand{\myTime}{February 2020\xspace}
 
-\usepackage[american]{babel}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\usepackage[english]{babel}
 
 \usepackage{csquotes}
 
@@ -71,21 +73,32 @@
 
 \hypersetup{%
   %draft, % hyperref's draft mode, for printing see below
-  colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+  colorlinks=true,
+  linktocpage=true,
+  pdfstartpage=1,
+  pdfstartview=FitV,
   % uncomment the following line if you want to have black links (e.g., for printing)
   %colorlinks=false, linktocpage=false, pdfstartpage=3, pdfstartview=FitV, pdfborder={0 0 0},%
-  breaklinks=true, pageanchor=true,%
-  pdfpagemode=UseNone, %
-  % pdfpagemode=UseOutlines,%
-  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-  hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+  breaklinks=true,
+  pageanchor=true,
+  pdfpagemode=UseNone,
+  % pdfpagemode=UseOutlines,
+  plainpages=false,
+  bookmarksnumbered,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  hypertexnames=true,
+  pdfhighlight=/O,
+  % nesting=true,
+  % frenchlinks,
   urlcolor=CTurl, linkcolor=CTlink, citecolor=CTcitation, %pagecolor=RoyalBlue,%
   %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
-  pdftitle={\myTitle},%
-  %pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},%
-  pdfauthor={\textcopyright\ \myName},%
-  pdfsubject={},%
-  pdfkeywords={},%
-  pdfcreator={pdfLaTeX},%
-  pdfproducer={LaTeX with hyperref and ClassicThesis (ArsClassica)}%
+  pdftitle={\myTitle},
+  pdfauthor={\myName},
+  pdfsubject={\mySubtitle},
+  pdfkeywords={WordPress, plugin, Private Content},
+  pdfcreator={pdfLaTeX},
+  pdfproducer={LaTeX with hyperref and ClassicThesis (with ArsClassica)}%
 }
+
+\usepackage[english]{varioref}

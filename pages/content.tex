@@ -17,15 +17,15 @@ The action is performed using a shortcode, for example:
 [private role="administrator"]Text for administrators[/private]
 \end{lstlisting}
 
-In figure \ref{fig:shortcode-action} you can see an example of usage.
+In figure \vref{fig:shortcode-action} you can see an example of usage.
 
 \begin{figure}[h]
 	\centering
-	\subfloat[][The rendered page when the visitor doesn't have rights to read
-	the hidden message. There is no text between the two paragraphs, even in the
+	\subfloat[][The webpage when the visitor doesn't have rights to read the
+	hidden message. There is no text between the two paragraphs, even in the
 	\textsc{html} source
 	page.]{\fbox{\includegraphics[width=.45\textwidth]{no-message.pdf}}} \quad
-	\subfloat[][The rendered page when the visitor has rights to read the hidden
+	\subfloat[][The webpage when the visitor has rights to read the hidden
 	message. The green background has been added via
 	\textsc{css}.]{\fbox{\includegraphics[width=.45\textwidth]{with-message.pdf}}}
 	\caption{The shortcode in action.}
@@ -35,7 +35,7 @@ In figure \ref{fig:shortcode-action} you can see an example of usage.
 Please, note that an Administrator can read an Editor private content or a
 Subscriber private content, and so on. Same thing for Editor, Author,
 Contributor, and Subscriber: \textit{a higher role can read a lower role
-content} (in almost all cases, see the paragraph \ref{multiple-custom-roles}
+content} (in almost all cases, see the paragraph \vref{multiple-custom-roles}
 \textit{Multiple custom roles} for more information), according to the following
 WordPress roles\footnote{For more information see \textsc{WordPress.org},
 \textit{Plugin Handbook}, ``Roles and Capabilities'',
@@ -88,7 +88,7 @@ the next sections of this page:
  \item \verb+class+
 \end{itemize}
 
-\section{\texttt{\{role\}} Text for a certain role}
+\section{\{role\} Text for a certain role}
 
 Accepted arguments:
 
@@ -108,7 +108,7 @@ Accepted arguments:
  \item \verb+custom-only+
 \end{itemize}
 
-Let's see them in detail in the table \ref{table:roles}.
+Let's see them in detail in the table \vref{table:roles}.
 
 \begin{table}
  \centering
@@ -229,7 +229,7 @@ by the user):
 [private role="custom-only" custom_role="designers"]Text for Designers only[/private]
 \end{lstlisting}
 
-\section{\texttt{\{recipient\}} Text for a specific or multiple users}
+\section{\{recipient\} Text for a specific or multiple users}
 
 Accepted arguments:
 
@@ -269,7 +269,7 @@ Also, you can use user \textsc{id}s to target users, for example:
   [private role="none" recipient="5, 31, 27"]Text for specific users only[/private]
 \end{lstlisting}
 
-\section{\texttt{\{custom\_role\}} Text for custom or multiple roles}
+\section{\{custom\_role\} Text for custom or multiple roles}
 
 Accepted arguments:
 
@@ -310,7 +310,7 @@ for example:
 In this case, Authors will read the private text, but higher roles (such as
 Editors) will not read it. It is like using a \verb+role-only+ option. Anyway,
 Administrators will read it. For more information, see the paragraph
-\ref{multiple-custom-roles} \textit{Multiple custom roles}.
+\vref{multiple-custom-roles} \textit{Multiple custom roles}.
 
 \subsection{Multiple custom roles}\label{multiple-custom-roles}
 
@@ -322,7 +322,7 @@ comma. For example:
 \end{lstlisting}
 
 You can mix custom roles and standard WordPress roles, with a \textit{caveat}
-explained in the paragraph \ref{caveat}.
+explained in the paragraph \vref{caveat}.
 
 For example:
 
@@ -359,7 +359,7 @@ role management. It's like you'd use a \verb+role-only+ option, in our example a
 \noindent will be read by Designers, Engineers, Authors, and Administrators, but
 not by Editors (even if Editor is a higher role than Author).
 
-\section{\texttt{\{reverse\}} Reverse the logic of hiding text}
+\section{\{reverse\} Reverse the logic of hiding text}
 
 Accepted arguments:
 
@@ -383,7 +383,7 @@ The \verb+reverse+ option is available only with the following options:
 
 See here below the two cases.
 
-\subsection{Use of the \texttt{reverse} option for single users}
+\subsection{Use of the \{reverse\} option for single users}
 
 If you want to show a text to all users but not to some, activate the option
 \verb+reverse+, so that users added in the \verb+recipient+ option will not read
@@ -398,7 +398,7 @@ For example:
 This shortcode will show the text to all users, excluding Alice, Bob, and
 Charlie (which cannot read the text).
 
-\subsection{Use of the \texttt{reverse} option for roles}
+\subsection{Use of the \{reverse\} option for roles}
 
 You can use the \verb+reverse+ option also when using roles. In this case you
 will not use the \verb+recipient+ option, but simply in this way:
@@ -419,9 +419,9 @@ You can also exclude multiple roles. For example:
 
 Take note that Administrators will read the hidden text, even if the current
 Administrator has also one or more of the excluded roles. See the section
-\ref{sec:admin-role} for more information and also the table \ref{table:roles}.
+\vref{sec:admin-role} for more information and also the table \vref{table:roles}.
 
-\section{\texttt{\{align\}} Align style}
+\section{\{align\} Align style}
 
 Accepted arguments:
 
@@ -432,17 +432,17 @@ Accepted arguments:
  \item \verb+justify+ --- Justify the paragraph
 \end{itemize}
 
-\section{\texttt{\{alt\}} Alternate text for excluded users}
+\section{\{alt\} Alternate text for excluded users}
 
-If you want to show an alternate text in case the reader can't read, you can
-use:
+If you want to show an alternate text in case the reader can't read the hidden
+text, you can use:
 
 \begin{lstlisting}
 [private role="author" alt="You have not rights to read this."]Text for authors only[/private]
 \end{lstlisting}
 
-Please, take note that the alternate text, if defined, is always publicly
-displayed.
+Please, take note that, if defined, the alternate text is always publicly
+displayed to users without the rights to read the hidden text.
 
 The alternate text can contain some \textsc{html} tags. The list is:
 
@@ -459,7 +459,7 @@ For example:
 [private role="subscriber" alt="<a href='https://www.example.com/subscribe' title='Subscribe now!'>Subscribe</a> to read this <strong>super powered</strong> text!"]Hidden text.[/private]
 \end{lstlisting}
 
-\section{\texttt{\{container\}} The \textsc{html} container for the text}
+\section{\{container\} The \textsc{html} container for the text}
 
 Starting from version 2.4, the user can choose the \textsc{html} container
 element for the text.
@@ -488,32 +488,33 @@ This is my home I bought a year ago [private container="span"](the key is under 
 \end{lstlisting}
 
 
-\section{\texttt{\{id\}} Custom \textsc{id}s for the \textsc{html} container}
+\section{\{id\} Custom \textsc{id}s for the \textsc{html} container}
 
 The user of the plugin can add custom \textsc{id}s to the \textsc{html}
-container using the option \verb+id=name-of-the-id+, for example:
+container using the option \verb+id="name-of-the-id"+, for example:
 
 \begin{lstlisting}
 [private id="myid1, custom-id-2, my_id_3"]Private text.[/private]
 \end{lstlisting}
 
-The single \textsc{id} names must be separated by a comma, not by a space. Also,
-if the \textsc{id} is composed by more words, the words must be separated by a
-dash or by an underscore, otherwise the words will be considered as separated
+The single \textsc{id} names should be separated by a comma. Also, if the
+\textsc{id} is composed by more words, the words must be separated by a dash or
+by an underscore, otherwise the single words will be considered as separated
 \textsc{id} names.
 
-\section{\texttt{\{class\}} Custom classes for the \textsc{html} container}
+\section{\{class\} Custom classes for the \textsc{html} container}
 
 The user of the plugin can add custom classes to the \textsc{html} container
-using the option \verb+class=name-of-the-class+, for example:
+using the option \verb+class="name-of-the-class"+, for example:
 
 \begin{lstlisting}
 [private class="myclass1, custom-class-2, my_class_3"]Private text.[/private]
 \end{lstlisting}
 
-The single class names must be separated by a comma, not by a space. Also, if
-the class is composed by more words, the words must be separated by a dash or by
-an underscore, otherwise the words will be considered as separated class names.
+The single class names should be separated by a comma. Also, if the class is
+composed by more words, the words must be separated by a dash or by an
+underscore, otherwise the single words will be considered as separated class
+names.
 
 \chapter{The Administrator role}
 
@@ -556,7 +557,7 @@ In the following examples, instead, Administrators cannot read the hidden texts:
 
 \chapter{Giving a style to the private text}
 
-The text generated by this plugin uses some CSS classes, listed here:
+The text generated by this plugin uses some \textsc{css} classes, listed here:
 
 \begin{itemize}
  \item \verb+private+ --- Applied to each \textsc{html} element generated by this
@@ -572,8 +573,8 @@ The text generated by this plugin uses some CSS classes, listed here:
   \item \verb+visitor-content+
   \item \verb+user-content+ --- When used for specific user(s).
   \begin{itemize}
-   \item \verb+user-only+ --- When used for specific user(s). This class is always
-   preceded by \verb+user-content+ class.
+   \item \verb+user-only+ --- When used for specific user(s). This class is
+   always preceded by \verb+user-content+ class.
     \item \verb+{user_login}-only+ --- When used for specific user(s). The
     placeholder \verb+{user_login}+ will be changed into the actual login name.
     This class is always preceded by \verb+user-content+ and \verb+user-only+
@@ -584,8 +585,8 @@ The text generated by this plugin uses some CSS classes, listed here:
   \item \verb+{custom_role}-content+ --- When used for custom roles. The
   placeholder \verb+{custom_role}+ will be changed into the actual custom role.
   \end{itemize}
- \item \verb+{role}-only+ --- Applied to the text for a specific role. This class
- is always preceded by \verb+{role}-content+ class.
+ \item \verb+{role}-only+ --- Applied to the text for a specific role. This
+ class is always preceded by \verb+{role}-content+ class.
  \item \verb+{custom-id-names}+ --- Added when specified by the user.
  \item \verb+{custom-class-names}+ --- Added when specified by the user.
  \item \verb+alt-text+ --- Applied to the alternate text.
@@ -595,7 +596,8 @@ The text generated by this plugin uses some CSS classes, listed here:
 
 It could be useful to test if the shortcode is working as intended. To do this,
 you can use a plugin that lets you temporarily switch between accounts. The
-plugin is \textit{User Switching} by John Blackbourn \& contributors available at:
+plugin is \textit{User Switching} by John Blackbourn \& contributors, available
+at:
 \begin{center}
   \url{https://wordpress.org/plugins/user-switching}
 \end{center}
