@@ -106,6 +106,8 @@ Accepted arguments:
  \item \verb+none+
  \item \verb+custom+
  \item \verb+custom-only+
+ \item \verb+post-author+
+ \item \verb+post-author-only+
 \end{itemize}
 
 Let's see them in detail in the table \vref{table:roles}.
@@ -140,6 +142,10 @@ Let's see them in detail in the table \vref{table:roles}.
  \verb+custom_role+ option. The hidden text is shown only to users that have a
  role in the \verb+custom_role+ list. \textit{Administrators cannot read the
  hidden text.} \\
+ \verb+post-author+ & The hidden text is shown to the author of the post.
+ \textit{Administrators can read the hidden text.} \\
+ \verb+post-author-only+ & The hidden text is shown to the author of the post
+ only. \textit{Administrators cannot read the hidden text.} \\
  \bottomrule
  \end{tabular}
  \caption{Who can read the private text when a given role is used.}
@@ -177,6 +183,12 @@ Subscribers:
 
 \begin{lstlisting}
 [private role="subscriber"]Text for Subscribers[/private]
+\end{lstlisting}
+
+Display this text to the author of the current post:
+
+\begin{lstlisting}
+[private role="post-author"]Text for author of the post[/private]
 \end{lstlisting}
 
 \subsection{Text for specific roles excluding other roles}
@@ -220,6 +232,12 @@ or the equivalent shortcode:
 
 \begin{lstlisting}
 [private role="visitor"]Text for Visitors only[/private]
+\end{lstlisting}
+
+Display this text to the author of the current post only:
+
+\begin{lstlisting}
+[private role="post-author-only"]Text for author of the post only[/private]
 \end{lstlisting}
 
 Display the private text to Designers only (Designers is a custom role created
@@ -543,6 +561,10 @@ In the following examples, instead, Administrators cannot read the hidden texts:
 
 \begin{lstlisting}
 [private role="author-only"]Private note for Author.[/private]
+\end{lstlisting}
+
+\begin{lstlisting}
+[private role="post-author-only"]Private note for the author of the post.[/private]
 \end{lstlisting}
 
 \begin{lstlisting}
